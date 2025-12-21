@@ -15,31 +15,35 @@ if not os.path.exists(saved_file_path):
 file_count = 0
 frame_count = 0
 saved_frame_count = 0
-interval = 15
+interval = 24
 
 while True:
     filename = stringify(file_count, path)
     file_count += 1
+    
+    if not os.path.exists(filename):
+        break
+    
     cap = cv2.VideoCapture(filename)
     
     while True:
         if not os.path.exists(filename):
             break
         
+        # TODO: Extract frames
         ret, frame = cap.read()
         
         if not ret:
             break
         
+        # TODO: Save frames to fake folder at interval
         if frame_count % interval == 0:
-            cv2.imshow('frame', frame)
-            break
+            filename = os.path.join(saved_file_path, f"{saved_frame_count:04d}.jpg")
+            cv2.imwrite(filename, frame)
+            print(f"Saved frame {saved_frame_count}.jpg")
+            saved_frame_count += 1
+            
+        frame_count += 1
     
     cap.release()
     cv2.destroyAllWindows()
-    break
-    
-# TODO: Extract frames
-
-
-# TODO: Save frames to fake folder at interval
