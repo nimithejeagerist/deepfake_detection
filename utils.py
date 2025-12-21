@@ -14,4 +14,5 @@ def stringify(number: int, path: str) -> str:
     else:
         target = str(number)
     
-    match = next()
+    match = next(p for p in folder.iterdir() if p.name[:3] == target)
+    return match
