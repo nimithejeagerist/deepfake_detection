@@ -2,7 +2,7 @@
 Source of all helper functions
 '''
 
-import Path
+from pathlib import Path
 
 def stringify(number: int, path: str) -> str:
     folder = Path(path)
