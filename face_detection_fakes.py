@@ -1,40 +1,35 @@
-from typing import Tuple, Union
-import math
+import os
 import cv2
 import numpy as np
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+from utils import stringify_new, get_crop_coordinates
 
-def get_crop_coordinates(img, detection):
-    width, height = img.shape[:2]
-    
-    bbox = detection.bounding_box
-    x1 = bbox.origin_x 
-    x2 = bbox.origin_x + bbox.width 
-    y1 = bbox.origin_y 
-    y2 = bbox.origin_y + bbox.height 
-    
-    if x2 > width or y2 > height:
-        print("Warning: Crop area extends beyond image dimension")
-    
-    return x1, x2, y1, y2
+path = "C:/Users/nimza/Documents/dd/fakes"
+saved_file_path = "C:/Users/nimza/Documents/dd/fakes_cropped/"
 
-IMAGE_FILE = "C:/Users/nimza/Documents/dd/fakes/1000.jpg"
-
-img = cv2.imread(IMAGE_FILE)
-# cv2.imshow("image", img)
+if not os.path.exists(saved_file_path):
+    os.makedirs(saved_file_path)
 
 base_options = python.BaseOptions(model_asset_path='detector.tflite')
 options = vision.FaceDetectorOptions(base_options=base_options)
 detector = vision.FaceDetector.create_from_options(options)
 
-image = mp.Image.create_from_file(IMAGE_FILE)
-detection_result = detector.detect(image)
-detection = detection_result.detections[0]
+saved_frame_count = 0
 
-x1, x2, y1, y2 = get_crop_coordinates(img, detection)
-cropped_image = img[y1:y2, x1:x2]
+while True:
+    IMAGE_FILE = stringify_new(saved_frame_count)
+    
+    img = cv2.imread(IMAGE_FILE)
 
-cv2.imshow("cropped_image", cropped_image)
-cv2.waitKey(0)
+    image = mp.Image.create_from_file(IMAGE_FILE)
+    detection_result = detector.detect(image)
+    detection = detection_result.detections[0]
+
+    x1, x2, y1, y2 = get_crop_coordinates(img, detection)
+    cropped_image = img[y1:y2, x1:x2]
+    
+    
+
+    
