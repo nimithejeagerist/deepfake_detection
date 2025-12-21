@@ -5,7 +5,7 @@ from utils import stringify
 
 # Create PATH
 path = "C:/Users/nimza/Documents/FaceForensics++_C23/DeepFakes"
-saved_file_path = "C:/Users/nimza/Documents/dd/fakes/"
+saved_file_path = "C:/Users/nimza/Documents/dd/fake_propped/"
 
 # TODO: Check if directories have been made and initialize
 if not os.path.exists(saved_file_path):
