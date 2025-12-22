@@ -33,7 +33,7 @@ def stringify_new(number: int, path: str) -> str:
         match = next(p for p in folder.iterdir() if p.name[:5] == target)
     else:
         match = next(p for p in folder.iterdir() if p.name[:4] == target)
-    return match
+    return str(match)
 
 def get_crop_coordinates(img, detection):
     width, height = img.shape[:2]
@@ -43,8 +43,5 @@ def get_crop_coordinates(img, detection):
     x2 = bbox.origin_x + bbox.width 
     y1 = bbox.origin_y 
     y2 = bbox.origin_y + bbox.height 
-    
-    if x2 > width or y2 > height:
-        print("Warning: Crop area extends beyond image dimension")
     
     return x1, x2, y1, y2
