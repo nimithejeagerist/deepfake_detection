@@ -28,7 +28,7 @@ class ResidualBlock(nn.Module):
 
 
 class ResNet34(nn.Module):
-    def __init__(self, in_channels=3, num_classes=2, n=3, block=ResidualBlock):
+    def __init__(self, in_channels=3, num_classes=2, block=ResidualBlock):
         super().__init__()
 
         # stem
