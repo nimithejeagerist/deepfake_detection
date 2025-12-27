@@ -3,7 +3,7 @@ A lightweight end-to-end system for detecting manipulated videos using face-leve
 
 This project was built as an exercise in model deployment, inference pipelines, and system integration, rather than as a production-ready detection service.
 ## Demo
-*(add video or GIF here)*
+https://github.com/user-attachments/assets/bd7c46ab-1094-400f-b97f-35d6ffd870c7
 
 ## Motivation
 Deepfake detection is often discussed in abstract terms, but deploying even a simple detector reveals practical questions that are easy to overlook:
