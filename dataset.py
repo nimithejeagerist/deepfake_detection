@@ -16,7 +16,7 @@ class DeepFakeDataset(Dataset):
     def __getitem__(self, idx):
         img_path = None
         image = None
-        label = self.img_labels.iloc[idx, 1]
+        label = int(self.img_labels.iloc[idx, 1])
         if label == 1:
             img_path = os.path.join(self.img_dir[0], self.img_labels.iloc[idx, 0])
         else:
