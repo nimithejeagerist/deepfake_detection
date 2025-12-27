@@ -5,7 +5,6 @@ This project was built as an exercise in model deployment, inference pipelines, 
 ## Demo
 *(add video or GIF here)*
 
----
 ## Motivation
 Deepfake detection is often discussed in abstract terms, but deploying even a simple detector reveals practical questions that are easy to overlook:
 
@@ -16,7 +15,6 @@ Deepfake detection is often discussed in abstract terms, but deploying even a si
 
 The goal of this project was not to build the “best” detector, but to translate a trained model into a working system that makes clear, interpretable decisions on real video inputs.
 
----
 ## System Overview
 The system is composed of two main components:
 - **Frontend (Next.js)**  
@@ -28,7 +26,6 @@ The system is composed of two main components:
 
 All model inference runs locally. Videos are processed transiently and are not persisted after inference.
 
----
 ## Detection Pipeline
 At a high level, the backend performs the following steps:
 1. **Video ingestion**  
@@ -46,7 +43,6 @@ At a high level, the backend performs the following steps:
 
 This design keeps the pipeline transparent and easy to reason about.
 
----
 ## Design Considerations
 Several deliberate choices shaped the system:
 - **Frame-level reasoning**  
@@ -60,7 +56,6 @@ Several deliberate choices shaped the system:
 - **Ephemeral data handling**  
   Videos and extracted frames are deleted after processing, keeping the system stateless.
 
----
 ## What This Demonstrates
 This project focuses less on model novelty and more on practical deployment concerns, including:
 - bridging trained models and real inputs,
